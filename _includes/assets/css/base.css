@@ -1,0 +1,389 @@
+/* CSS variables (colors, typography etc) are set in CMS > Settings > Theme */
+
+:root {
+	--font-size-base: 0.95rem;
+	--font-size-small: calc(var(--font-size-base) / 1.25);
+	--space: calc(var(--space-scale) / 100 * 1rem);
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-text-size-adjust: 100%;
+	   -moz-text-size-adjust: 100%;
+	    -ms-text-size-adjust: 100%;
+	        text-size-adjust: 100%;
+}
+
+/* Resets */
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Body */
+
+body {
+	font-family: var(--font);
+	font-size: calc(var(--font-size-base) * var(--font-scale) / 100);
+	font-weight: var(--font-weight);
+	line-height: calc(1.6 * var(--line-height-scale) / 100);
+	color: var(--color-text);
+	height: 100vh;
+	background-color: var(--color-background);
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+	transition: background-color var(--transition-time) ease;
+}
+
+/* Grid */
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	align-items: flex-start;
+	-moz-column-gap: calc(var(--space) * 1.25);
+	     column-gap: calc(var(--space) * 1.25);
+}
+
+.grid--body {
+	grid-template-rows: auto 1fr auto;
+}
+
+.grid--header {
+	grid-template-columns: 3fr 1fr;
+}
+
+.grid--footer {
+	grid-auto-rows: minmax(2rem, auto);
+}
+
+.grid__item {
+	grid-column: 1;
+}
+
+.grid__item--end {
+	display: flex;
+	justify-content: flex-end;
+	grid-column: 2;
+}
+
+.grid__item--top {
+	grid-row: 1;
+}
+
+.grid__item--breakout {
+	margin-left: calc(-50vw + 50%);
+	margin-right: calc(-50vw + 50%);
+	display: flex;
+}
+
+/* CSS Columns */
+
+.columns {
+	text-align: left;
+  -moz-column-count: 1;
+       column-count: 1;
+	-moz-column-width: auto;
+	     column-width: auto;
+}
+
+.columns__item {
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+}
+
+/* @supports (grid-template-rows: masonry) {
+  .columns {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+  	grid-template-rows: masonry;
+	}
+} */
+
+/* Color scheme toggle */
+
+.toggle__label {
+	width: 1rem;
+  height: 1rem;
+	padding-left: .5rem;
+	cursor: pointer;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+
+.toggle__checkbox,
+.toggle__text {
+	display: none;
+}
+
+/* Images */
+
+img {
+	transition: opacity var(--transition-time) ease;
+	opacity: 0;
+}
+
+img.loaded {
+	opacity: 1;
+  transform: initial;
+}
+
+/* Fade on hover effect (images) */
+
+.hover-fade {
+	transition: opacity var(--transition-time), -webkit-filter var(--transition-time);
+	transition: filter var(--transition-time), opacity var(--transition-time);
+	transition: filter var(--transition-time), opacity var(--transition-time), -webkit-filter var(--transition-time);
+	opacity: 1;
+}
+
+a:hover .hover-fade {
+	-webkit-filter: grayscale(.5);
+	        filter: grayscale(.5);
+	opacity: .75;
+}
+
+/* Typography */
+
+.text--hide {
+	text-indent: -9999px;
+	overflow: hidden;
+}
+
+small,
+.text--small {
+	font-size: calc(var(--font-size-small) * var(--font-scale) / 100);
+	line-height: calc(1rem * var(--line-height-scale) / 100);
+}
+
+a[href],
+a[href]:visited {
+	color: var(--color-link);
+	text-decoration: none;
+}
+
+a[href].link-nocolor {
+	color: currentColor;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: calc(var(--font-size-base) * var(--font-scale) / 100);
+	font-weight: var(--font-weight);
+}
+
+p {
+	margin-bottom: var(--space);
+}
+
+header .markdown * {
+	margin-bottom: 0;
+}
+
+.hide {
+	display: none;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+/* Navigational Arrows */
+
+.arrow {
+	text-decoration: none;
+}
+
+.arrow::after {
+  display: inline-block;
+	font-family: Inter, sans-serif;
+}
+
+.arrow--right::after {
+	content: "\2192";
+	margin-left: calc(var(--space) / 3);
+}
+
+/* Buttons */
+
+.btn {
+	display: flex;
+	padding: 0.5rem 1rem;
+	justify-content: center;
+	align-content: center;
+}
+
+/* Media Queries */
+
+/* Tablet Breakpoint */
+
+@media (min-width: 540px) {
+
+	.mw--readable {
+		max-width: calc(var(--space) * 24);
+	}
+
+	.grid__item--span-4 {
+		grid-column: span 4;
+	}
+
+	.columns {
+		-moz-column-gap: calc(var(--space) * 1.25);
+		     column-gap: calc(var(--space) * 1.25);
+		-moz-column-count: 2;
+       column-count: 2;
+	}
+
+	.grid--project {
+		row-gap: calc(var(--space) * 1.5);
+	}
+
+	.grid__item--breakout {
+		margin-left: unset;
+		margin-right: unset;
+	}
+
+}
+
+/* Small Desktop Breakpoint */
+
+@media (min-width: 840px) {
+
+	:root {
+		--space: calc(var(--space-scale) / 100 * 1.5rem);
+	}
+
+	.grid__item--span-4 {
+		grid-column: span 2/5;
+	}
+
+	.grid--header,
+	.grid--intro,
+	.grid--project,
+	.grid--description,
+	.grid--footer {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.grid--footer {
+		grid-auto-rows: auto;
+	}
+
+	.grid__item {
+		grid-column: initial;
+	}
+
+	.grid__item--end {
+		display: flex;
+		justify-content: flex-end;
+		grid-column: 4;
+	}
+
+	[data-orientation] {
+		grid-column: 2 / span 3;
+	}
+
+	[data-orientation=portrait] {
+		grid-column: 2 / span 3;
+	}
+
+}
+
+/* Desktop Breakpoint */
+
+@media (min-width: 1140px) {
+
+	.grid__item--span-4 {
+		grid-column: span 2/5;
+	}
+
+	.columns {
+		-moz-column-count: 4;
+       column-count: 4;
+	}
+
+	[data-orientation] {
+		grid-column: 2 / span 3;
+	}
+
+	[data-orientation=portrait] {
+		grid-column: 3 / span 2;
+	}
+
+}
+
+/* Padding */
+
+.p--1 {
+	padding: var(--space)
+}
+
+.p--2 {
+	padding: calc(var(--space) * 2 );
+}
+
+.pb--0 {
+	padding-bottom: 0;
+}
+
+.pb--1 {
+	padding-bottom: var(--space);
+}
+
+.pb--2 {
+	padding-bottom: calc(var(--space) * 2 );
+}
+
+.pb--3 {
+	padding-bottom: calc(var(--space) * 3 );
+}
+
+.pb--4 {
+	padding-bottom: calc(var(--space) * 4 );
+}
+
+.pb--6 {
+	padding-bottom: calc(var(--space) * 6 );
+}
+
+.pb--8 {
+	padding-bottom: calc(var(--space) * 8 );
+}
+
+/* Margins */
+
+.mb--0 {
+	margin-bottom: 0;
+}
+
+.mb--1 {
+	margin-bottom: var(--space);
+}
+
+.mb--2 {
+	margin-bottom: calc(var(--space) * 2 );
+}
+
+.mb--3 {
+	margin-bottom: calc(var(--space) * 3 );
+}
+
+.mb--4 {
+	margin-bottom: calc(var(--space) * 4 );
+}
+
+.mb--6 {
+	margin-bottom: calc(var(--space) * 6 );
+}
+
+.mb--8 {
+	margin-bottom: calc(var(--space) * 8 );
+}
+

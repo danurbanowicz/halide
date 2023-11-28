@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+section: home
+permalink: "/index.html"
+---
+<article>
+
+  <header class="pb--4">
+
+    <div class="grid grid--intro">
+
+      <div class="grid__item--span-4 mw--readable markdown">{{ settings.metadata.site_description | renderUsingMarkdown | safe }}</div>
+
+    </div>
+
+  </header>
+
+  {% set projectList = collections.projects | limit(settings.theme.theme_features.item_output_limit or 48) %}
+  {% include "components/projectList.njk" %}
+
+</article>
+
+{# Set an empty variable for the Open Graph image #}
+{% set ogImage = "assets/uploads/photo-1523834418182-2fb3764ca47c.avif" %}
+
+{# Gets appended to <head> during build #}
+{% include "components/opengraph.njk" %}

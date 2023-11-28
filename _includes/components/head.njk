@@ -1,0 +1,49 @@
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <meta name="author" content="https://github.com/danurbanowicz">
+  <meta name="generator" content="{{ eleventy.generator }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="{{ settings.theme.theme_colors.background }}">
+
+  {# Set the SVG favicon for browsers that support it #}
+  <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
+
+  {# Generate a 48px favicon.png file in the site root (from our uploaded SVG or PNG) #}
+  {% set faviconSrc = settings.metadata.site_icon_svg or settings.metadata.site_icon_png %}
+  {% favicon faviconSrc %}
+
+  {# Set specific SEO data for home page, otherwise use SEO data in page frontmatter #}
+  {% if page.url == "/" %}
+    <title>{{ settings.metadata.seo.site_title or settings.metadata.site_title }}</title>
+    <meta name="description" content="{{ settings.metadata.seo.site_description or settings.metadata.site_description }}">
+  {% else %}
+    <title>{{ seo.title or title }}</title>
+    <meta name="description" content="{{ seo.description or description }}">
+  {% endif %}
+
+  {# Set a noindex tag in head sitewide or on per-page basis #}
+  {% if ( settings.metadata.seo.no_index === true or seo.no_index === true ) %}
+    <meta name="robots" content="noindex">
+  {# No point specifiying a canonical URL if noindex is set :p #}
+  {% else %}
+    <link rel="canonical" href="{{ settings.metadata.site_url | url }}{{ page.url }}">
+  {% endif %}
+
+  {# Set theme and base styles #}
+  {% set css %}
+    {% include "assets/css/theme.njk" %}
+    {% include "assets/css/base.css" %}
+  {% endset %}
+
+  <style>
+    {% set googleFontSymbolUrl = "https://fonts.googleapis.com/css2?family=Inter&display=swap&text=↑→↓←" %}
+    {% googleFontsCss googleFontSymbolUrl %}
+    {%- if (settings.theme.theme_typography.font != "system" and settings.theme.theme_typography.font != "") -%}
+      {% set googleFontUrl = "https://fonts.googleapis.com/css2?family=" + settings.theme.theme_typography.font | formatGoogleFontName or 'Inter' + "&display=swap" %}
+      {% googleFontsCss googleFontUrl %}
+    {%- endif -%}
+    {{ css | cssmin | safe }}
+  </style>
+</head>

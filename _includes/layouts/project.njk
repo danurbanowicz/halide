@@ -1,0 +1,99 @@
+---
+layout: layouts/base.njk
+permalink: "project/{{ title | slug }}/index.html"
+section: project
+---
+<article>
+
+  <header class="pb--4">
+
+    <div class="grid grid--intro">
+
+      <h1 class="grid__item--span-4 mw--readable">{{ title }}</h1>
+      <div class="grid__item--span-4 mw--readable markdown">{{ description | renderUsingMarkdown | safe }}</div>
+        
+      {% if year and settings.theme.theme_features.show_project_year %}
+        <p class="grid__item--span-4 mw--readable mb--0">
+          {{ year }}
+        </p>
+      {% endif %}
+
+    </div>
+
+  </header>
+
+  <section class="grid grid--project pb--3">
+  
+  {# Set an empty variable for the Open Graph image #}
+  {% set ogImage = "" %}
+
+    {% if images %}
+
+      {# {% for image in images | sort(false, true, "position") %} #}
+      {# Images are output in the order they appear in project frontmatter #}
+      {# and can be ordered with Tina CMS' drag and drop #}
+      {% for image in images %}
+
+        {% set imageSrc = image.src %}
+        {% set altText = image.caption or title %}
+        {% set classes = "grid__item grid__item--breakout" %}
+        {% set loadingType = "lazy" %}
+        {% if loop.first %}
+          {% set ogImage = imageSrc %}
+					{% set loadingType = "eager" %}
+				{% endif %}
+        {% set viewportSizes = "(min-width: 1140px) 70vw, (min-width: 540px) 90vw, 100vw" %}
+        {% set outputWidths = [
+            settings.config.image_width_sm or 1080,
+            settings.config.image_width_md or 1800,
+            settings.config.image_width_lg or 2400
+          ]
+        %}
+
+        {% set outputFormats = [] %}
+        
+        {% for format, i in settings.images %}
+          {% if i.enabled === true %}
+            {{ '' if outputFormats.push(format) }}
+          {% endif %}
+        {% endfor %}
+
+        {% set outputQualityJpeg = settings.images.jpeg.quality or 75 %}
+        {% set outputQualityWebp = settings.images.webp.quality or 75 %}
+        {% set outputQualityAvif = settings.images.avif.quality or 75 %}
+
+        {% generateImage imageSrc,
+            altText,
+            classes,
+            loadingType,
+            viewportSizes,
+            outputWidths,
+            outputFormats,
+            outputQualityJpeg,
+            outputQualityWebp,
+            outputQualityAvif,
+            false
+        %}
+
+      {% endfor %}
+
+    {% endif %}
+
+  </section>
+
+  <section>
+    <div class="grid grid--description pb--6">
+      <div class="grid__item--span-4 mw--readable">
+        {{ layoutContent | safe }}
+      </div>
+    </div>
+  </section>
+  
+</article>
+
+{# Output a list of random projects, excluding the current project, default limit of 24 #}
+{% set projectList = collections.projects | randomLimit((settings.theme.theme_features.item_output_limit or 48), page.url) %}
+{% include "components/projectList.njk" %}
+
+{# Gets appended to <head> during build #}
+{% include "components/opengraph.njk" %}

@@ -1,0 +1,85 @@
+{% if projectList | length %}
+
+	<section class="columns columns--projects">
+
+		{% for project in projectList | reverse %}
+
+			<div class="columns__item mb--1">
+
+				<a href="{{ project.url | url }}" class="link-nocolor">
+
+					<figure>
+
+						{% set image = "" %}
+
+						{% for i in project.data.images %}
+							{% if loop.first %}
+								{% set image = i %}
+							{% endif %}
+						{% endfor %}
+
+						{% set imageSrc = image.src %}
+						{% set altText = image.caption or title %}
+						{% set classes = "" %}
+						{% set loadingType = "lazy" %}
+						{% if loop.first and section != "project" %}
+							{% set loadingType = "eager" %}
+						{% endif %}
+						{% set viewportSizes = "(min-width: 1140px) 22vw, (min-width: 540px) 45vw, 85vw" %}
+						{% set outputWidths = [
+								settings.config.image_grid_width_sm or 640,
+								settings.config.image_grid_width_md or 1080,
+								settings.config.image_grid_width_lg or 1800
+							]
+						%}
+
+						{% set outputFormats = [] %}
+					
+						{% for format, i in settings.images %}
+							{% if i.enabled === true %}
+								{{ '' if outputFormats.push(format) }}
+							{% endif %}
+						{% endfor %}
+
+						{% set outputQualityJpeg = settings.images.jpeg.quality or 75 %}
+						{% set outputQualityWebp = settings.images.webp.quality or 75 %}
+						{% set outputQualityAvif = settings.images.avif.quality or 75 %}
+
+						{% generateImage imageSrc,
+								altText,
+								classes,
+								loadingType,
+								viewportSizes,
+								outputWidths,
+								outputFormats,
+								outputQualityJpeg,
+								outputQualityWebp,
+								outputQualityAvif,
+								false
+						%}
+						
+						<figcaption class="pb--1{% if settings.theme.theme_features.show_project_grid_titles === false %} hide{% endif %}">
+
+							<span class="text--small arrow arrow--right">{{ project.data.title }}</span>
+
+						</figcaption>
+
+					</figure>
+
+				</a>
+
+			</div>
+
+		{% endfor %}
+
+	</section>
+
+{% else %}
+
+	<section>
+
+		<p>There are no projects here yet.</p>
+
+	</section>
+
+{% endif %}

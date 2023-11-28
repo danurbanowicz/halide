@@ -1,0 +1,80 @@
+# Halide Settings
+metadata:
+  # site_url should be your production URL
+  site_url: 'https://halide.jamstacktemplates.net'
+  site_title: Halide
+  site_subtitle_1: Creator Portfolio
+  site_subtitle_2: Sometown, CA
+  site_description: >
+    Halide is a customizable, minimalist portfolio website designed for photographers and still image creators. See the full feature list at [jamstacktemplates.net/halide](https://jamstacktemplates.net/halide)
+  site_email: hello@jamstacktemplates.net
+  site_social_url: 'https://github.com/jamstacktemplates/halide'
+  site_icon_svg: assets/icons/favicon.svg
+  site_icon_png: ''
+  # add a GA4 ID to enable Google Analytics
+  site_ga4_id: ''
+  # home page SEO fields
+  seo:
+    site_title: Halide by Jamstack Templates
+    site_description: >-
+      A customizable, minimalist portfolio website designed for photographers and still image creators.
+    # sitewide noindex, be careful y'all!
+    no_index: false
+# theme customization
+theme:
+  theme_layout:
+    # increase/decrease padding, margins, gaps etc
+    space_scale: 100
+  # colors, can be hex, rgb, rgba or any valid CSS color value
+  theme_colors:
+    # light mode colors
+    background: '#ffffff'
+    text: '#101010'
+    link: '#542BFF'
+    # dark mode colors
+    background_dark: '#101010'
+    text_dark: '#f1f1f1'
+    link_dark: '#6e4cff'
+  theme_typography:
+    # font can be any variable Google Font name or 'system' to use a system font stack
+    font: Overpass Mono
+    font_weight: 400
+    # adjust font_scale up/down to increase/decrease font size
+    font_scale: 100
+    # as above to increase/decrease line height
+    line_height_scale: 100
+  theme_features:
+    # enables dark mode toggle and auto-detects user preference
+    enable_dark_mode: true
+    # max number of image grid items
+    item_output_limit: 48
+    # animations transition in milliseconds
+    transition_duration: 300
+    show_project_year: true
+    show_project_grid_titles: true
+# Image settings (lovell/sharp). JPEG cannot be disabled via Tina CMS.
+images:
+  jpeg:
+    enabled: true
+    quality: 75
+  webp:
+    enabled: true
+    quality: 75
+  avif:
+    enabled: true
+    quality: 75
+# Locale and translations
+i18n:
+  site_language: en
+  site_social_title: GitHub
+# Internal config, hidden from Tina CMS
+config:
+  # breakpoints used to calculate responsive image sizes
+  image_grid_width_sm: 640
+  image_grid_width_md: 1080
+  image_grid_width_lg: 1800
+  image_width_sm: 1080
+  image_width_md: 1800
+  image_width_lg: 2400
+  # define the optional system font stack
+  font_stack_system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"

@@ -1,0 +1,41 @@
+{
+  "name": "halide",
+  "version": "0.0.1",
+  "description": "Halide is a new, minimalist, responsive portfolio website designed for photographers and still image creators",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "watch": "npx @11ty/eleventy --watch",
+    "serve": "npx @11ty/eleventy --serve",
+    "debug": "DEBUG=* npx @11ty/eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamstacktemplates/halide"
+  },
+  "author": {
+    "name": "Jamstack Templates",
+    "email": "hello@jamstacktemplates.net",
+    "url": "https://github.com/jamstacktemplates/halide"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jamstacktemplates/halide/issues"
+  },
+  "homepage": "https://github.com/jamstacktemplates/halide",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-fetch": "^4.0.0",
+    "@11ty/eleventy-img": "^3.1.1",
+    "@tinacms/cli": "^1.5.31",
+    "clean-css": "^5.3.2",
+    "dotenv": "^16.3.1",
+    "eleventy-plugin-helmet": "^0.2.2",
+    "html-minifier": "^4.0.0",
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^13.0.2",
+    "netlify-plugin-11ty": "^1.4.0",
+    "netlify-plugin-csp-generator": "^1.5.0",
+    "tinacms": "^1.5.22",
+    "uglify-js": "^3.17.4"
+  }
+}

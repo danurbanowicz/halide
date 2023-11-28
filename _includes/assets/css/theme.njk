@@ -1,0 +1,22 @@
+:root {
+	--space-scale: {{ settings.theme.theme_layout.space_scale or "100" }};
+	--color-text: {{ settings.theme.theme_colors.text or "#000000" }};
+  --color-link: {{ settings.theme.theme_colors.link or "#000000" }};
+	--color-background: {{ settings.theme.theme_colors.background or "#ffffff" }};
+	--font:
+	{% if (settings.theme.theme_typography.font == "system" or settings.theme.theme_typography.font == "") %}
+		{{ settings.config.font_stack_system | safe }}
+	{% else %}
+		{{ settings.theme.theme_typography.font }}
+	{% endif %};
+  --font-weight: {{ settings.theme.theme_typography.font_weight or "400" }};
+  --font-scale: {{ settings.theme.theme_typography.font_scale or "100" }};
+	--line-height-scale: {{ settings.theme.theme_typography.line_height_scale or "100" }};
+  --transition-time: {{ settings.theme.theme_features.transition_duration or "300" }}ms;
+}
+
+:root[dark] {
+	--color-text: {{ settings.theme.theme_colors.text_dark or "#ffffff" }};
+  --color-link: {{ settings.theme.theme_colors.link_dark or "#ffffff" }};
+	--color-background: {{ settings.theme.theme_colors.background_dark or "#000000" }};
+}

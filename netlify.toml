@@ -1,0 +1,37 @@
+# Netlify Build Configuration
+# Be aware that if you have conflicting configuration values, settings specified in
+# netlify.toml override any corresponding settings in the Netlify UI.
+# https://www.netlify.com/docs/netlify-toml-reference/
+
+# Output directory and 11ty build command
+[build]
+  publish = "_site"
+  command = "npx tinacms build && eleventy"
+
+# Cache generated content between builds (e.g. images)
+[[plugins]]
+package = "netlify-plugin-11ty"
+
+  [plugins.inputs]
+  cache_img = "assets/images/"
+  cache_img_httpHeader = true
+  cache_assets = "../.cache"
+
+# Generate a CSP policy at Netlify build time using a build plugin
+# Automatically generates SHA-256 hashes for inline <style> and <script> tags
+# https://github.com/MarcelloTheArcane/netlify-plugin-csp-generator
+
+[[plugins]]
+  package = "netlify-plugin-csp-generator"
+
+  [plugins.inputs]
+    buildDir = "_site"
+    reportOnly = true
+
+  [plugins.inputs.policies]
+    defaultSrc = "'self'"
+    scriptSrc = "'self' www.google-analytics.com www.googletagmanager.com"
+    fontSrc = "'self' fonts.gstatic.com"
+    imgSrc = "'self' www.google-analytics.com"
+    connectSrc = "www.google-analytics.com"
+    frameAncestors = "'none'"

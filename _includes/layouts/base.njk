@@ -1,0 +1,38 @@
+<!doctype html>
+<html {% if section %} data-current="{{ section }}"{% endif %} lang="{{ settings.i18n.site_language or "en" }}">
+
+	{% include "components/head.njk" %}
+
+	<body class="grid grid--body">
+
+		{% include "components/header.njk" %}
+
+		<main class="p--2 pb--8">
+			{# The main page/template content #}
+			{{ layoutContent | safe }}
+		</main>
+
+		{% include "components/footer.njk" %}
+
+		{# Minify and output the core site JS #}
+		{% set js %}
+    	{% include "assets/js/global.js" %}
+			{% if settings.theme.theme_features.enable_dark_mode %}
+				{% include "assets/js/dark_mode.js" %}
+			{% endif %}
+  	{% endset %}
+ 		<script>{{ js | jsmin | safe }}</script>
+
+		{# Fallback for image visibility when JS is unavailable #}
+		<noscript>
+			<style>img { opacity: 1; }</style>
+		</noscript>
+
+		{# Analytics script #}
+		{% if settings.metadata.site_ga4_id %}
+			{% include "components/analytics.njk" %}
+		{% endif %}
+
+	</body>
+
+</html>

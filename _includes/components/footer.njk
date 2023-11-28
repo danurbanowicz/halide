@@ -1,0 +1,27 @@
+<footer class="p--2 text--small">
+
+	<div class="grid grid--footer">
+
+    <div class="grid__item">
+      <span>&copy; {{ settings.metadata.site_title or "Site Title" }}</span>
+    </div>
+
+    {% if settings.metadata.site_email %}
+      <div class="grid__item">
+        <span>
+          <a href="mailto:{{ settings.metadata.site_email }}">{{ settings.metadata.site_email }}</a>
+        </span>
+      </div>
+    {% endif %}
+
+    {% if settings.metadata.site_social_url %}
+      <div class="grid__item">
+        <span>
+          <a href="{{ settings.metadata.site_social_url }}" target="_blank" rel="noopener">{{ settings.i18n.site_social_title }}</a>
+        </span>
+      </div>
+    {% endif %}
+
+  </div>
+
+</footer>
