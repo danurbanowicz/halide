@@ -1,44 +1,74 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Netlify Status](https://api.netlify.com/api/v1/badges/110e596b-182b-4702-8039-c5bd58f59b20/deploy-status)](https://app.netlify.com/sites/halide/deploys)
+
 # Halide
 
-## Introduction
+Halide is a minimalist image portfolio template for deployment to Netlify. It uses [Eleventy](https://www.11ty.dev/) and [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) behind the scenes to generate static HTML pages from Markdown, and responsive images in next-gen formats like AVIF and WebP. It doesn't use a front-end framework, and only contains a few lines of vanilla JavaScript to provide some progressive enhancement. Halide leverages native browser features as much as possible. For example, the `loading` attribute for native image lazy loading and the `prefers-color-scheme` CSS media feature.
 
-Thank you for choosing Halide from Jamstack Templates to build your image creator portfolio website. Halide has been designed with simplicity, speed, and ease of use in mind. No coding necessary!
+Halide also comes with [Tina CMS](https://tina.io/) pre-configured. Tina CMS is an open source, headless content management system that uses GitHub as a robust and convenient content store.
 
-To get the most from Halide, there are a few steps that you need to do before installing. If you need some help during setup, you can find support info at the bottom of this page.
+## Demo: [halide.netlify.app](https://halide.netlify.app)
 
-### How does Halide work?
+## Features
 
-Halide is built around Jamstack principles. It uses separate services that join together to create a distributed, secure system to build pre-rendered content, serve it from a Content Delivery Network (CDN), and to allow you to make edits to your website easily.
+- Fast, static HTML front-end (Lighthouse results)
+- Mobile-first responsive layout
+- Dark mode support
+- Customizable theme settings, colors, and typography
+- Minification pipeline
+- Clientside framework-free
+- Content as MD and YAML files
+- Eleventy Image for responsive images in next-gen formats
+- Netlify build caching for faster deploys
+- Automatic CSP with hashing support
 
-- GitHub: where the Halide code repository and your image and text content is stored
-- Netlify: the service that builds your website from the Halide GitHib code and content, and deploys it to a global CDN
-- Tina CMS: the React-based CMS that you log in to to make changes to your website content and settings
+## Getting started
 
-When you make an edit to your website using the CMS and hit save, the changes are immediately pushed to your GitHub repository. GitHub then tells Netlify to build your website and deploy it for you. All of this happens automatically in the background. This is sometimes called a Continuous Deployment (CD) workflow.
+Halide requires a number of services to be configured before it can be deployed. If you don't already have accounts with the following providers, you'll need to set these up first. Each provider’s free plan is sufficient for most use-cases.
 
-## Getting Started
+1. GitHub
+2. Netlify
+3. Tina Cloud (if you want to use Tina CMS)
 
-### Requirements
+When you've created accounts with the providers listed above, you can proceed with the steps below to set up Halide.
 
-Halide requires a number of services to be configured before installation and deployment. If you don't already have accounts with the following providers, you'll need to set these up first.
+## Setup
 
-1. GitHub account (free tier)
-2. Netlify account (free tier)
-3. Tina CMS Cloud account (free tier)
+_This readme is a work in progress, setup steps may be incomplete or outdated._
 
-Once you've created accounts with the providers listed above, you can then proceed with the steps below to set up Halide.
+Pressing the Deploy to Netlify button below will clone this repo and configure a Netlify site for it.
 
-### Step 1: Set up your GitHub repository
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danurbanowicz/halide#TINA_CMS_CLIENT_ID=replace-with-your-tina-cms-client-id&TINA_CMS_TOKEN=replace-with-your-tina-cms-token&TINA_CMS_SEARCH_TOKEN=replace-with-your-tina-cms-search-token)
 
-In this step, you'll download the Halide `halide.zip` file from your downloads area and upload it to your GitHub account.
+You can also clone or fork this repo and create a new Netlify site for it manually.
 
-1. Make sure you are logged in to your GitHub account
-2. ...
+### Step 1: Configure Tina CMS
 
-## Help & Support
+Note: The bulk of the configuration relates to Tina CMS so feel free to skip this step if you're happy working with MD and YAML files directly.
 
-Need some help? Purchasers of Halide receive 6 months of free email support. Send an email to hello@jamstacktemplates.net and we'll get back to you within 48 hours (usually much faster). Be sure to send from the same email address you used to purchase Halide.
+1. Navigate to your Tina Cloud [projects dashboard](https://app.tina.io/projects)
+2. Create a new custom project, and follow the steps to connect it to your GitHub repo with the required permissions
+3. Enter a project name and the live site URL you will use for your your Halide site and press Create Project
+4. Navigate to your Tina Cloud project settings and make a note of the client ID, and the Content and Search tokens listed in the Tokens section
+5. In your Netlify account, navigate to Site configuration > Environment variables and replace the dummy values for `TINA_CMS_CLIENT_ID`, `TINA_CMS_TOKEN`, and `TINA_CMS_SEARCH_TOKEN` with the actual values as noted in the previous step
 
-### Customization Service
+### Step 2: To do
 
-Need a bespoke customization to your Halide website? Contact me for details.
+### Step 3: To do
+
+_This readme is a work in progress, setup steps may be incomplete or outdated._
+
+## About images
+
+Halide generates a set of up to 12 optimized image files per source image. Images are stored between builds in Netlify's build cache. These generated images, although cached, are considered as ephemeral and are not stored in your GitHub repo; only the source image is stored. If the build cache is ever lost or expires, each image will be re-generated from its source on the next build and cached.
+
+## Bugs and questions
+
+If your question relates to a possible bug or problem with this project, please open an issue. For everything else, including suggestions, please use [GitHub Discussions](https://github.com/danurbanowicz/halide/discussions).
+
+## Contributing
+
+Pull requests and suggestions are welcome.
+
+## Customization service
+
+If you need any special customization of your Halide website, reach out to [@danurbanowicz](https://github.com/danurbanowicz).

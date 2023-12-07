@@ -1,61 +1,73 @@
 # Halide Settings
+# Site metadata
 metadata:
-  # site_url should be your production URL
-  site_url: 'https://halide.jamstacktemplates.net'
+  # site_url should match your full production URL
+  site_url: 'https://halide.netlify.app'
   site_title: Halide
-  site_subtitle_1: Creator Portfolio
+  # site subtitles are optional
+  site_subtitle_1: Image Portfolio
   site_subtitle_2: Sometown, CA
+  # Home page description, accepts markdown
   site_description: >
-    Halide is a customizable, minimalist portfolio website designed for photographers and still image creators. See the full feature list at [jamstacktemplates.net/halide](https://jamstacktemplates.net/halide)
-  site_email: hello@jamstacktemplates.net
-  site_social_url: 'https://github.com/jamstacktemplates/halide'
+    Halide is a customizable Jamstack portfolio theme designed for photographers and still image creators. See the full feature list at [jamstacktemplates.net/halide](https://jamstacktemplates.net/halide)
+  # footer contact email
+  site_email: dan.urbanowicz@gmail.com
+  # footer social link (the social title is defined in the i18n section)
+  site_social_url: 'https://github.com/danurbanowicz/halide'
+  # SVG image used for sharing/bookmark icons
   site_icon_svg: assets/icons/favicon.svg
+  # optional PNG image used for sharing/bookmark icons
   site_icon_png: ''
-  # add a GA4 ID to enable Google Analytics
+  # add a GA4 ID to enable Google Analytics e.g. G-123456789
   site_ga4_id: ''
   # home page SEO fields
   seo:
-    site_title: Halide by Jamstack Templates
+    # <title> tag
+    site_title: Halide - Jamstack portfolio theme
+    # meta description
     site_description: >-
       A customizable, minimalist portfolio website designed for photographers and still image creators.
-    # sitewide noindex, be careful y'all!
+    # sitewide noindex tag, be careful y'all! (can be enabled per-page instead)
     no_index: false
 # theme customization
 theme:
   theme_layout:
-    # increase/decrease padding, margins, gaps etc
+    # scale to increase/decrease padding, margins, gaps etc
     space_scale: 100
-  # colors, can be hex, rgb, rgba or any valid CSS color value
+  # theme colors can be hex, rgb, rgba or any valid CSS color value
   theme_colors:
-    # light mode colors
+    # default colors aka "light mode"
     background: '#ffffff'
     text: '#101010'
     link: '#542BFF'
     # dark mode colors
     background_dark: '#101010'
-    text_dark: '#f1f1f1'
-    link_dark: '#6e4cff'
+    text_dark: '#c1c1c1'
+    link_dark: '#ffffff'
   theme_typography:
-    # font can be any variable Google Font name or 'system' to use a system font stack
+    # font can be any variable Google Font name. Enter 'system' to use a system font stack
     font: Overpass Mono
+    # can be any valid variable font weight value e.g. 415
     font_weight: 400
     # adjust font_scale up/down to increase/decrease font size
     font_scale: 100
-    # as above to increase/decrease line height
+    # adjust line_height_scale up/down to increase/decrease line height
     line_height_scale: 100
   theme_features:
-    # enables dark mode toggle and auto-detects user preference
+    # enables the dark mode toggle and detects the user's dark mode preference
     enable_dark_mode: true
-    # max number of image grid items
+    # max number of home page image grid items
     item_output_limit: 48
     # animations transition in milliseconds
     transition_duration: 300
     show_project_year: true
     show_project_grid_titles: true
-# Image settings (lovell/sharp). JPEG cannot be disabled via Tina CMS.
+# Image settings (lovell/sharp). JPEG format can't be disabled via the CMS.
 images:
   jpeg:
+    # at least JPEG should be enabled
     enabled: true
+    # Compression quality from 1-100
     quality: 75
   webp:
     enabled: true
@@ -65,11 +77,14 @@ images:
     quality: 75
 # Locale and translations
 i18n:
+  # any valid ISO language code e.g. en or en-US
   site_language: en
+  # single-language translations can be defined here
   site_social_title: GitHub
 # Internal config, hidden from Tina CMS
 config:
-  # breakpoints used to calculate responsive image sizes
+  # define responsive image widths for project thumbnails and large images
+  # modifying these will require a corresponding change to viewport sizes in responsive image markup
   image_grid_width_sm: 640
   image_grid_width_md: 1080
   image_grid_width_lg: 1800

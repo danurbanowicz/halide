@@ -10,53 +10,47 @@
 
 					<figure>
 
-						{% set image = "" %}
+						{# Images are output in the order they appear in project frontmatter #}
+      			{# and can be ordered in Tina CMS using drag and drop #}
 
+						{# Set the first project image from the project #}
+						{% set image = "" %}
 						{% for i in project.data.images %}
 							{% if loop.first %}
 								{% set image = i %}
 							{% endif %}
 						{% endfor %}
 
-						{% set imageSrc = image.src %}
-						{% set altText = image.caption or title %}
-						{% set classes = "" %}
-						{% set loadingType = "lazy" %}
-						{% if loop.first and section != "project" %}
-							{% set loadingType = "eager" %}
-						{% endif %}
-						{% set viewportSizes = "(min-width: 1140px) 22vw, (min-width: 540px) 45vw, 85vw" %}
-						{% set outputWidths = [
-								settings.config.image_grid_width_sm or 640,
-								settings.config.image_grid_width_md or 1080,
-								settings.config.image_grid_width_lg or 1800
-							]
-						%}
-
+						{# Make an array of the enabled image formats from settings.yaml #}
 						{% set outputFormats = [] %}
-					
 						{% for format, i in settings.images %}
 							{% if i.enabled === true %}
 								{{ '' if outputFormats.push(format) }}
 							{% endif %}
 						{% endfor %}
 
-						{% set outputQualityJpeg = settings.images.jpeg.quality or 75 %}
-						{% set outputQualityWebp = settings.images.webp.quality or 75 %}
-						{% set outputQualityAvif = settings.images.avif.quality or 75 %}
-
-						{% generateImage imageSrc,
-								altText,
-								classes,
-								loadingType,
-								viewportSizes,
-								outputWidths,
-								outputFormats,
-								outputQualityJpeg,
-								outputQualityWebp,
-								outputQualityAvif,
-								false
+						{# Create an object for our project thumbnail image parameters which we can then
+        		destructure inside our shortcode function. See eleventy.js for what's going on #}
+						{% set params = 
+							{
+								"src": image.src,
+								"alt": image.caption or title,
+								"loadingType": "eager" if (loop.first and section != "project") else "lazy",
+								"viewportSizes": "(min-width: 1140px) 22vw, (min-width: 540px) 45vw, 85vw",
+								"outputWidths": [
+									settings.config.image_grid_width_sm,
+									settings.config.image_grid_width_md,
+									settings.config.image_grid_width_lg
+								],
+								"outputFormats": outputFormats,
+								"outputQualityJpeg": settings.images.jpeg.quality,
+								"outputQualityWebp": settings.images.webp.quality,
+								"outputQualityAvif": settings.images.avif.quality
+							}
 						%}
+
+						{# The image shortcode #}
+						{% generateImage params %}
 						
 						<figcaption class="pb--1{% if settings.theme.theme_features.show_project_grid_titles === false %} hide{% endif %}">
 

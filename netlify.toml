@@ -3,10 +3,10 @@
 # netlify.toml override any corresponding settings in the Netlify UI.
 # https://www.netlify.com/docs/netlify-toml-reference/
 
-# Output directory and 11ty build command
+# Output directory and build command: npx tinacms build && eleventy
 [build]
   publish = "_site"
-  command = "npx tinacms build && eleventy"
+  command = "npx eleventy"
 
 # Cache generated content between builds (e.g. images)
 [[plugins]]
@@ -26,7 +26,7 @@ package = "netlify-plugin-11ty"
 
   [plugins.inputs]
     buildDir = "_site"
-    reportOnly = true
+    reportOnly = false
 
   [plugins.inputs.policies]
     defaultSrc = "'self'"

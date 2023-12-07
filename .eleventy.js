@@ -17,7 +17,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // https://www.11ty.dev/docs/plugins/image/
-  // Generate a 48x48px PNG favicon and link tag from an SVG or PNG file
+  // Generate PNG icon files and a link tag from a source SVG or PNG file
   eleventyConfig.addShortcode("favicon", async function(src) {
 
     // Remove preceding slash from image path if it exists
@@ -33,26 +33,32 @@ module.exports = function(eleventyConfig) {
         return `${name}-${width}.${format}`;
       }
 		});
-    let data = metadata.png[0]; // use the smallest PNG from the array for the <head> icon
+
+    // Build the icon link tag
+    let data = metadata.png[0];
 		return `<link rel="icon" href="${data.url}" type="image/png">`;
+
 	});
 
-  // https://www.11ty.dev/docs/plugins/image/
-  eleventyConfig.addShortcode("generateImage", async function(
-    src,
-    alt,
-    classes,
-    loadingType,
-    viewportSizes,
-    outputWidths,
-    outputFormats,
-    outputQualityJpeg,
-    outputQualityWebp,
-    outputQualityAvif,
-    returnMetadata
-  ) {
+  // Shortcode to generate a responsive project image
+  eleventyConfig.addShortcode("generateImage", async function(params) {
 
-    // Remove preceding slash from image path if it exists
+    // Destructure the paramaters object and set some defaults
+    let {
+      src, // throw an error if src is missing
+      alt = "",
+      classes = "",
+      loadingType = "lazy",
+      viewportSizes = "",
+      outputWidths = ["1080","1800","2400"],
+      outputFormats = ["jpeg"],
+      outputQualityJpeg = 75,
+      outputQualityWebp = 75,
+      outputQualityAvif = 75
+    } = params;
+
+    // Tina CMS prefixes uploaded img src with a forward slash (?)
+    // Remove it from the image path if it exists
     src = src.startsWith("/") ? src.slice(1) : src;
 
     let metadata = await Image(src, {
@@ -72,7 +78,7 @@ module.exports = function(eleventyConfig) {
     });
 
     let lowsrc = metadata.jpeg[0];
-		//let highsrc = metadata.jpeg[metadata.jpeg.length - 1];
+
     let orientation;
 
     // Detect and set image orientation
@@ -82,12 +88,6 @@ module.exports = function(eleventyConfig) {
       orientation = "portrait";
     } else {
       orientation = "square";
-    }
-
-    // If returnMetadata is true, bypass <picture> and output the small JPEG src
-    // Used for the project Open Graph image
-    if (returnMetadata) {
-      return lowsrc.url;
     }
 
     return `<picture class="${classes}" data-orientation="${orientation}">
@@ -193,7 +193,8 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-  // Shortcode to download, cache, and minify Google Fonts CSS
+  // Shortcode to download, cache, and minify Google Fonts CSS to reduce HTTP requests on the front-end
+  // TODO Consider downloading the font file itself and storing in the build cache
   eleventyConfig.addShortcode("googleFontsCss", async function(url) {
 
     let fontCss = await EleventyFetch(url, {
@@ -201,7 +202,8 @@ module.exports = function(eleventyConfig) {
       type: "text",
       fetchOptions: {
         headers: {
-          // lol
+          // Google Fonts API serves font formats based on the browser user-agent header
+          // So here we pretend to be a browser... in this case, Chrome 74 on MacOS 14
           "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
         }
       }

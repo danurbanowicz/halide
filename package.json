@@ -10,18 +10,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamstacktemplates/halide"
+    "url": "https://github.com/danurbanowicz/halide"
   },
   "author": {
-    "name": "Jamstack Templates",
-    "email": "hello@jamstacktemplates.net",
-    "url": "https://github.com/jamstacktemplates/halide"
+    "name": "Dan Urbanowicz",
+    "email": "dan.urbanowicz@gmail.com",
+    "url": "https://github.com/danurbanowicz"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jamstacktemplates/halide/issues"
+    "url": "https://github.com/danurbanowicz/halide/issues"
   },
-  "homepage": "https://github.com/jamstacktemplates/halide",
+  "homepage": "https://github.com/danurbanowicz/halide",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-fetch": "^4.0.0",
