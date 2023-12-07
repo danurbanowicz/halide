@@ -2,24 +2,44 @@
 
 # Halide
 
-Halide is a minimalist image portfolio template for deployment to Netlify. It uses [Eleventy](https://www.11ty.dev/) and [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) behind the scenes to generate static HTML pages from Markdown, and responsive images in next-gen formats like AVIF and WebP. It doesn't use a front-end framework, and only contains a few lines of vanilla JavaScript to provide some progressive enhancement. Halide leverages native browser features as much as possible. For example, the `loading` attribute for native image lazy loading and the `prefers-color-scheme` CSS media feature.
+Halide is a minimalist image portfolio template, ready for deployment to Netlify.
+
+It uses [Eleventy](https://www.11ty.dev/) and [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) under the hood to generate static HTML pages from Markdown, and responsive images in next-gen formats like AVIF and WebP.
+
+It doesn't use a front-end framework, and only contains a few lines of vanilla JavaScript to provide some progressive enhancement. Halide leverages native browser features as much as possible. For example, the `loading` attribute for native image lazy loading and the `prefers-color-scheme` CSS media feature.
 
 Halide also comes with [Tina CMS](https://tina.io/) pre-configured. Tina CMS is an open source, headless content management system that uses GitHub as a robust and convenient content store.
 
-## Demo: [halide.netlify.app](https://halide.netlify.app)
+## [Demo Site](https://halide.netlify.app)
 
 ## Features
 
-- Fast, static HTML front-end (Lighthouse results)
-- Mobile-first responsive layout
-- Dark mode support
+- Responsive, static HTML front-end
+- Tina CMS for git-based content management
+- [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) for optimized images in next-gen formats
+- Optional dark mode support
 - Customizable theme settings, colors, and typography
-- Minification pipeline
+- Simple asset minification pipeline
 - Clientside framework-free
-- Content as MD and YAML files
-- Eleventy Image for responsive images in next-gen formats
+- Uses Markdown files for content
+- Simple YAML configuration
 - Netlify build caching for faster deploys
-- Automatic CSP with hashing support
+- Automatic Content Security Policy
+
+## How it works
+
+Halide site settings are stored inside `_/data/settings.yaml`
+
+It stores project data as `.md` files inside the `projects` folder, and stores source images inside the `assets/uploads` folder.
+
+Halide generates a set of up to 12 optimized image files per source image. Images are cached between builds (local and Netlify). The generated images are not stored in your GitHub repo; only the source image is stored. If the build cache is ever lost or expires, each image will be re-generated from its source on the next build, and cached.
+
+Halide's page structure is very simple. Apart from the [404 page](https://halide.netlify.app/nope), there are just 2 views:
+
+- [Home](https://halide.netlify.app)
+- [Project](https://halide.netlify.app/project/british-gq/)
+
+By design, there are no additional pages for a bio, contact etc. You could easily add them if you wanted to, though.
 
 ## Getting started
 
@@ -55,11 +75,9 @@ Note: The bulk of the configuration relates to Tina CMS so feel free to skip thi
 
 ### Step 3: To do
 
+### Local development: To do
+
 _This readme is a work in progress, setup steps may be incomplete or outdated._
-
-## About images
-
-Halide generates a set of up to 12 optimized image files per source image. Images are stored between builds in Netlify's build cache. These generated images, although cached, are considered as ephemeral and are not stored in your GitHub repo; only the source image is stored. If the build cache is ever lost or expires, each image will be re-generated from its source on the next build and cached.
 
 ## Bugs and questions
 
