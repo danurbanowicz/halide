@@ -146,14 +146,14 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toFormat("yyyy");
   });
 
-  // Minify CSS
-  eleventyConfig.addFilter("cssmin", function(code) {
-    return new CleanCSS({}).minify(code).styles;
-  });
-
   // base64 encode a string
   eleventyConfig.addFilter("encodeURL", function(url) {
     return encodeURIComponent(url);
+  });
+
+  // Minify CSS
+  eleventyConfig.addFilter("cssmin", function(code) {
+    return new CleanCSS({}).minify(code).styles;
   });
 
   // Minify JS
