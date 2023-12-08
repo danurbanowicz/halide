@@ -8,7 +8,7 @@ Halide is a minimalist image portfolio template, ready for deployment to Netlify
 
 It uses [Eleventy](https://www.11ty.dev/) and [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) under the hood to generate static HTML pages from Markdown, and responsive images in next-gen formats like AVIF and WebP.
 
-It doesn't use a front-end framework, and only contains a few lines of vanilla JavaScript to provide some progressive enhancement. Halide leverages native browser features as much as possible. For example, the `loading` attribute for native image lazy loading and the `prefers-color-scheme` CSS media feature.
+It doesn't use a front-end framework, and only contains a few lines of vanilla JavaScript to provide some progressive enhancement. Halide leverages native browser features as much as possible.
 
 Halide also comes with [Tina CMS](https://tina.io/) pre-configured. Tina CMS is an open source, headless content management system that uses GitHub as a robust and convenient content store.
 
