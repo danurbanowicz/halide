@@ -65,16 +65,16 @@ theme:
     show_project_grid_titles: true
 # Image settings (lovell/sharp). JPEG format can't be disabled via the CMS.
 images:
-  jpeg:
-    # at least JPEG should be enabled
+  avif:
     enabled: true
-    # Compression quality from 1-100
     quality: 75
   webp:
     enabled: true
     quality: 75
-  avif:
+  jpeg:
+    # at least JPEG should be enabled
     enabled: true
+    # Compression quality from 1-100
     quality: 75
 # Locale and translations
 i18n:

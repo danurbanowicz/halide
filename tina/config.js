@@ -513,23 +513,20 @@ export default defineConfig({
             fields: [
               {
                 type: "object",
-                name: "jpeg",
-                label: "JPEG Settings",
+                name: "avif",
+                label: "AVIF Settings",
                 fields: [
                   {
                     type: "boolean",
                     name: "enabled",
-                    label: "JPEG Enabled",
-                    description: "JPEG Images must be enabled.",
-                    ui: {
-                      component: "hidden",
-                    }
+                    label: "Enabled",
+                    description: "Enable AVIF Images?",
                   },
                   {
                     type: "number",
                     name: "quality",
-                    label: "JPEG Image Quality",
-                    description: "Controls JPEG image compression, from 1-100. A lower value means smaller file sizes but lower image quality. Default: 80",
+                    label: "AVIF Image Quality",
+                    description: "Controls AVIF image compression, from 1-100. A lower value means smaller file sizes but lower image quality. Default: 80",
                     ui:{
                       validate: (val)=>{
                         if (val < 1 || val >= 101 ) {
@@ -568,20 +565,23 @@ export default defineConfig({
               },
               {
                 type: "object",
-                name: "avif",
-                label: "AVIF Settings",
+                name: "jpeg",
+                label: "JPEG Settings",
                 fields: [
                   {
                     type: "boolean",
                     name: "enabled",
-                    label: "Enabled",
-                    description: "Enable AVIF Images?",
+                    label: "JPEG Enabled",
+                    description: "JPEG Images must be enabled.",
+                    ui: {
+                      component: "hidden",
+                    }
                   },
                   {
                     type: "number",
                     name: "quality",
-                    label: "AVIF Image Quality",
-                    description: "Controls AVIF image compression, from 1-100. A lower value means smaller file sizes but lower image quality. Default: 80",
+                    label: "JPEG Image Quality",
+                    description: "Controls JPEG image compression, from 1-100. A lower value means smaller file sizes but lower image quality. Default: 80",
                     ui:{
                       validate: (val)=>{
                         if (val < 1 || val >= 101 ) {
