@@ -63,11 +63,11 @@ Pressing the Deploy to Netlify button below will clone this repo and configure a
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danurbanowicz/halide#TINA_CMS_CLIENT_ID=replace-with-your-tina-cms-client-id&TINA_CMS_TOKEN=replace-with-your-tina-cms-token&TINA_CMS_SEARCH_TOKEN=replace-with-your-tina-cms-search-token)
 
+:bulb: _The first Netlify deploy will fail but don't worry, continue the steps below to add your Tina CMS project and tokens._
+
 Make a note of the site URL Netlify has created for you e.g. https://fantastic-llama.netlify.app
 
 ### Step 2: Create a Tina CMS project
-
-Note: The bulk of the configuration relates to Tina CMS, so feel free to skip this step if you're happy working with Markdown and YAML files directly.
 
 1. Navigate to your Tina Cloud [projects dashboard](https://app.tina.io/projects)
 2. Create a new custom project, and follow the steps to connect it to your GitHub repo with the required permissions
@@ -145,7 +145,25 @@ npx tinacms dev -c "npx eleventy --serve"
 
 If you choose to run `dev` your site should now be running on http://localhost:8080 and a local instance of Tina CMS will be available at http://localhost:8080/admin/
 
-### Settings
+### Using Halide without Tina CMS
+
+You can use Halide without Tina CMS by manually editing your `_/data/settings.yaml` and creating repo `.md` files for your projects.
+
+You'll need to remove the Tina CMS build command prefix from your `netlify.toml` file and replace it with the standard Eleventy build command:
+
+```
+[build]
+  publish = "_site"
+  command = "eleventy"
+```
+
+And for local development you can run:
+
+```
+npx eleventy --serve
+```
+
+## Settings
 
 You'll find your site's main settings in `_/data/settings.yaml`. The file is commented and most settings are self-explanatory.
 
@@ -153,11 +171,11 @@ You can edit the Tina CMS settings and content schema at `/tina/config.js`.
 
 And your Eleventy build configuration and filters can be found inside `eleventy.js`.
 
-### Projects
+## Projects
 
 Projects are stored inside the `/projects/` directory as Markdown `.md` files with YAML frontmatter. If you're using Tina CMS to add a project, the filename will be generated automatically from the project title. The project filename is not used by Halide, so you can call them what you want as long as they end in `.md`.
 
-### Images
+## Images
 
 Project source images are stored in `/assets/uploads/` and are checked into git. You should try to use images that are in high-quality JPEG format and exactly 2400 pixels wide. If you upload an image smaller than this, images will still display on your site but your responsive `<picture>` element will not have the largest 2400 pixel image size available.
 
