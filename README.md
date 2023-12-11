@@ -1,4 +1,4 @@
-![Halide](screenshot.jpg?raw=true "Halide in dark mode")
+[![Halide](screenshot.jpg?raw=true "Halide in dark mode")](https://halide.netlify.app)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Netlify Status](https://api.netlify.com/api/v1/badges/110e596b-182b-4702-8039-c5bd58f59b20/deploy-status)](https://app.netlify.com/sites/halide/deploys)
 
