@@ -149,9 +149,17 @@ Halide uses minimal clientside JS which can be found at `_/includes/assets/js/`.
 
 If you have enabled Google Analytics, the necessary scripts will be output before the closing `</body>` tag.
 
+## Caveats
+
+### Images
+
+Halide takes a full-size source image and uses [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) and [Sharp](https://github.com/lovell/sharp/) to generate up to 12 optimized variant images in JPEG, WebP, and AVIF formats and in various sizes for the responsive `<picture>` markup. If your site had a total 100 project images, Halide would need to generate 1200 variants! :scream: 
+
+Although the resulting images are only built once (they're cached between builds), it does mean that the first build or any image re-build can take a while. The culprit is Sharp's handling of the AVIF image format which is [very resource-hungry](https://github.com/lovell/sharp/issues/2597). Disabling AVIF format in Halide's image settings is a temporary workaround to reduce first-build times.
+
 ## Bugs and questions
 
-For possible bugs or problems with this project, feel free to open an issue. For everything else, including suggestions and help, please [open a new discussion](https://github.com/danurbanowicz/halide/discussions).
+If you believe you've found a bug or a serious problem, please open an issue. For everything else, including suggestions and getting help, please [open a discussion](https://github.com/danurbanowicz/halide/discussions).
 
 ## Contributing
 
