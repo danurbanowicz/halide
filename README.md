@@ -4,9 +4,9 @@ _Note: This readme is a work in progress, so some setup steps might be missing o
 
 # Halide
 
-Halide is a minimalist image portfolio template, ready for deployment to Netlify.
+Halide is a very simple and fast image portfolio template, ready for deployment to Netlify.
 
-It uses [Eleventy](https://www.11ty.dev/) and [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) under the hood to generate static HTML pages from Markdown, and responsive images in next-gen formats like AVIF and WebP.
+It uses [Eleventy](https://www.11ty.dev/) under the hood to generate static HTML files from Markdown and YAML content, and  responsive images in next-gen formats like AVIF and WebP.
 
 It doesn't use a front-end framework, and only contains a few lines of vanilla JavaScript to provide some progressive enhancement. Halide leverages native browser features as much as possible.
 
@@ -21,12 +21,12 @@ Halide also comes with [Tina CMS](https://tina.io/) pre-configured. Tina CMS is 
 - [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) for optimized images in next-gen formats
 - Optional dark mode support
 - Customizable theme settings, colors, and typography
-- Simple asset minification pipeline
+- Simple HTML/CSS/JS minification pipeline
 - Clientside framework-free
-- Uses Markdown files for content
+- Markdown files for content
 - Simple YAML configuration
 - Netlify build caching for faster deploys
-- Automatic Content Security Policy
+- Automatic CSP headers
 
 ## How it works
 
@@ -94,15 +94,29 @@ cd my-site-name
 git clone https://github.com/danurbanowicz/halide.git
 ```
 
-3.Install dependencies
+3. Install dependencies
 
 ```
 npm install
 ```
 
+4. Generate a Tina CMS and Eleventy build
+
+Generate a production-ready build to the _site folder:
+
+```
+npx tinacms build -c "npx eleventy --serve"
+```
+
+Or build and host on a local development server:
+
+```
+npx tinacms dev -c "npx eleventy --serve"
+```
+
 ## Customization
 
-Halide aims to be more or less ready out of the box for a non-developer user to get up and running. Because of this, it is fairly opinionated with regards to visual design and site structure, but it should be trivial for developer users to use as a base for their own design, or to extend with additional pages or functionality.
+Halide aims to be more or less ready out of the box for a non-developer user to get up and running. Because of this, it is fairly opinionated with regards to visual design and site structure, but it also aims to be trivial for developer users to modify or extend with additional content or functionality.
 
 ### Styles
 
@@ -116,7 +130,7 @@ The main stylesheet can be found at `_/includes/assets/css/base.css`. The CSS is
 
 Halide uses minimal clientside JS which can be found at `_/includes/assets/js/`. JS is bundled and minified during build and output inside an inline `script` tag before the closing `</body>` tag.
 
-If you have enabled Google Analytics, the necessary scripts will be output in this location.
+If you have enabled Google Analytics, the necessary scripts will be output before the closing `</body>` tag.
 
 ## Bugs and questions
 
