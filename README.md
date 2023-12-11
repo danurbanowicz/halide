@@ -115,7 +115,21 @@ git clone https://github.com/danurbanowicz/halide.git
 npm install
 ```
 
-4. Build and serve Halide
+4. Create an `.env` file to store your Tina CMS access tokens and make sure it is added to your site's `.gitignore` to prevent the tokens being committed to your repo.
+
+```
+echo ".env" >> .gitignore
+```
+
+Add your tokens to the `.env` file, one per line.
+
+```
+TINA_CMS_CLIENT_ID=my-tina-cms-client-id
+TINA_CMS_TOKEN=my-tina-cms-token
+TINA_CMS_SEARCH_TOKEN=my-tina-cms-search-token
+```
+
+5. Build and serve Halide
 
 Generate a production-ready build to the _site folder:
 
@@ -130,6 +144,24 @@ npx tinacms dev -c "npx eleventy --serve"
 ```
 
 If you choose to run `dev` your site should now be running on http://localhost:8080 and a local instance of Tina CMS will be available at http://localhost:8080/admin/
+
+### Settings
+
+You'll find your site's main settings in `_/data/settings.yaml`. The file is commented and most settings are self-explanatory.
+
+You can edit the Tina CMS settings and content schema at `/tina/config.js`.
+
+And your Eleventy build configuration and filters can be found inside `eleventy.js`.
+
+### Projects
+
+Projects are stored inside the `/projects/` directory as Markdown `.md` files with YAML frontmatter. If you're using Tina CMS to add a project, the filename will be generated automatically from the project title. The project filename is not used by Halide, so you can call them what you want as long as they end in `.md`.
+
+### Images
+
+Project source images are stored in `/assets/uploads/` and are checked into git. You should try to use images that are in high-quality JPEG format and exactly 2400 pixels wide. If you upload an image smaller than this, images will still display on your site but your responsive `<picture>` element will not have the largest 2400 pixel image size available.
+
+The project _output_ images (that is to say, your processed responsive images) are not checked into git and are instead cached between builds (locally and on Netlify). Each image is only built once, unless it has changed.
 
 ## Customization
 
@@ -153,9 +185,21 @@ If you have enabled Google Analytics, the necessary scripts will be output befor
 
 ### Images
 
-Halide takes a full-size source image and uses [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) and [Sharp](https://github.com/lovell/sharp/) to generate up to 12 optimized variant images in JPEG, WebP, and AVIF formats and in various sizes for the responsive `<picture>` markup. If your site had a total 100 project images, Halide would need to generate 1200 variants! :scream: 
+Halide takes a full-size source image and uses [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) ([lovell/sharp](https://github.com/lovell/sharp/)) to generate up to 12 optimized variant images in JPEG, WebP, and AVIF formats and in various sizes for the responsive `<picture>` markup. If your site has a total of 100 project images and you have JPEG, WebP, and AVIF formats enabled, Halide will need to generate 1200 variants :scream:
 
-Although the resulting images are only built once (they're cached between builds), it does mean that the first build or any image re-build can take a while. The culprit is Sharp's handling of the AVIF image format which is [very resource-hungry](https://github.com/lovell/sharp/issues/2597). Disabling AVIF format in Halide's image settings is a temporary workaround to reduce first-build times.
+_Image widths in `settings.yaml`_
+```
+image_grid_width_sm: 640
+image_grid_width_md: 1080
+image_grid_width_lg: 1800
+image_width_sm: 1080
+image_width_md: 1800
+image_width_lg: 2400
+```
+
+Although the resulting images are only built once (they're cached between builds), it does mean that the first build or any image re-build can take a while. The culprit is the processing of AVIF images which is [very resource-hungry](https://github.com/lovell/sharp/issues/2597). Disabling AVIF format in Halide's image settings is a temporary workaround to reduce first-build times.
+
+_Note: I might add Cloudinary as an image storage option if enough users feel that first-builds are too long._
 
 ## Bugs and questions
 
