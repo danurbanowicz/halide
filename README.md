@@ -56,13 +56,15 @@ When you've created accounts with the providers listed above, you can proceed wi
 
 ## Setup
 
+### Step 1: Use the Deploy to Netlify button
+
 Pressing the Deploy to Netlify button below will clone this repo and configure a Netlify site for it.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danurbanowicz/halide#TINA_CMS_CLIENT_ID=replace-with-your-tina-cms-client-id&TINA_CMS_TOKEN=replace-with-your-tina-cms-token&TINA_CMS_SEARCH_TOKEN=replace-with-your-tina-cms-search-token)
 
-You can also clone or fork this repo and create a new Netlify site for it manually.
+Make a note of the site URL Netlify has created for you e.g. https://fantastic-llama.netlify.app
 
-### Step 1: Configure Tina CMS
+### Step 2: Create a Tina CMS project
 
 Note: The bulk of the configuration relates to Tina CMS, so feel free to skip this step if you're happy working with Markdown and YAML files directly.
 
@@ -70,17 +72,28 @@ Note: The bulk of the configuration relates to Tina CMS, so feel free to skip th
 2. Create a new custom project, and follow the steps to connect it to your GitHub repo with the required permissions
 3. Enter a project name and the live site URL you will use for your your Halide site and press Create Project
 4. Navigate to your Tina Cloud project settings and make a note of the client ID, and the Content and Search tokens listed in the Tokens section
-5. In your Netlify account, navigate to Site configuration > Environment variables and replace the dummy values for `TINA_CMS_CLIENT_ID`, `TINA_CMS_TOKEN`, and `TINA_CMS_SEARCH_TOKEN` with the actual values as noted in the previous step
 
-### Step 2: To do
+### Step 3: Add Tina CMS environmant variables to Netlify
 
-### Step 3: To do
+1. In your Netlify account, navigate to Site configuration > Environment variables and replace the dummy values for `TINA_CMS_CLIENT_ID`, `TINA_CMS_TOKEN`, and `TINA_CMS_SEARCH_TOKEN` with the actual values as noted in the previous section
+2. Trigger a new deploy in the Netlify UI > Deploys > Trigger deploy > Deploy site
 
-### Local development
+### Step 4: Log in to Tina CMS and configure site settings
 
-You might want to make some more advanced changes to Halide to make it your own, and to make this easier you can set up local development.
+1. Navigate to your Tina CMS login URL located at `/admin/` e.g. https://fantastic-llama.netlify.app/admin/ and log in if prompted. (Tina CMS will attempt to log you in with your Tina CLoud credentials)
+2. In the Tina CMS dashboard, navigate to Settings > Metadata and enter your Netlify site URL and your site name etc
+3. Once you have saved your changes, Netlify will re-build your site
 
-If you want to use Tina CMS, you will need to follow the account setup steps discussed above and prefix the Eleventy build command with Tina CMS' own build command.
+### Step 5. Add a new project
+
+1. Navigate to Tina CMS > Projects and create a new project, making sure to enter a meaningful title and to upload a high-quality image(s).
+2. Once you have saved your changes, Netlify will re-build your site and the new project will be visible on your live site
+
+## Local development
+
+You can run Halide and Tina CMS locally for development.
+
+If you want to use Tina CMS, you will need to follow the Tina Cloud account setup steps discussed above.
 
 1. Make a new directory and navigate to it
 
@@ -101,7 +114,7 @@ git clone https://github.com/danurbanowicz/halide.git
 npm install
 ```
 
-4. Generate a Tina CMS and Eleventy build
+4. Build and serve Halide
 
 Generate a production-ready build to the _site folder:
 
@@ -114,6 +127,8 @@ Or build and host on a local development server:
 ```
 npx tinacms dev -c "npx eleventy --serve"
 ```
+
+If you choose to run `dev` your site should now be running on http://localhost:8080 and a local instance of Tina CMS will be available at http://localhost:8080/admin/
 
 ## Customization
 
