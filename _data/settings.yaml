@@ -27,7 +27,8 @@ metadata:
     # meta description
     site_description: >-
       A customizable, minimalist portfolio website designed for photographers and still image creators.
-    # sitewide noindex tag, be careful y'all! (can be enabled per-page instead)
+    # Adds a noindex <meta> tag on all site pages, be careful y'all!
+    # Instead you can block indexing per-project with no_index: true
     no_index: false
 # theme customization
 theme:
