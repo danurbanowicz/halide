@@ -118,6 +118,7 @@ npm install
 4. Create an `.env` file to store your Tina CMS access tokens and make sure it is added to your site's `.gitignore` to prevent the tokens being committed to your repo.
 
 ```
+touch .env
 echo ".env" >> .gitignore
 ```
 
