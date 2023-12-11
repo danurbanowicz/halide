@@ -19,6 +19,7 @@ Halide also comes with [Tina CMS](https://tina.io/) pre-configured. Tina CMS is 
 - Responsive, static HTML front-end
 - Exceptional performance ([Lighthouse test report](https://halide.netlify.app/reports/lighthouse/))
 - [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) for optimized images in next-gen formats
+- Automated `<picture>` syntax markup with srcset and sizes
 - Optional Tina CMS for easy content management
 - Dark mode support
 - Customizable theme settings, colors, and typography
