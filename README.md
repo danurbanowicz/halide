@@ -32,9 +32,9 @@ Halide also comes with [Tina CMS](https://tina.io/) pre-configured. Tina CMS is 
 
 ## How it works
 
-Halide site settings are stored inside `_/data/settings.yaml`
+Halide site settings are stored inside [`_/data/settings.yaml`](https://github.com/danurbanowicz/halide/blob/main/_data/settings.yaml)
 
-It stores project data as `.md` files inside the `projects` folder, and stores source images inside the `assets/uploads` folder.
+Project data is stored as `.md` files inside the `projects` folder, and source images are stored inside the `assets/uploads` folder.
 
 Halide generates a set of up to 12 optimized image files per source image. Images are cached between builds (local and Netlify). The generated images are not stored in your GitHub repo; only the source image is stored. If the build cache is ever lost or expires, each image will be re-generated from its source on the next build, and cached.
 
