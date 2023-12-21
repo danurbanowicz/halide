@@ -166,7 +166,7 @@ npx eleventy --serve
 
 ## Settings
 
-You'll find your site's main settings in `_/data/settings.yaml`. The file is commented and most settings are self-explanatory.
+You'll find your site's main settings in [`_/data/settings.yaml`](https://github.com/danurbanowicz/halide/blob/main/_data/settings.yaml). The file is commented and most settings are self-explanatory.
 
 You can edit the Tina CMS settings and content schema at `/tina/config.js`.
 
