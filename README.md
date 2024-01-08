@@ -14,6 +14,8 @@ Halide also comes with [Tina CMS](https://tina.io/) pre-configured. Tina CMS is 
 
 ## [Demo Site](https://halide.netlify.app)
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/danurbanowicz/halide#TINA_CMS_CLIENT_ID=replace-with-your-tina-cms-client-id&TINA_CMS_TOKEN=replace-with-your-tina-cms-token&TINA_CMS_SEARCH_TOKEN=replace-with-your-tina-cms-search-token)
+
 ## Features
 
 - Responsive, static HTML front-end
