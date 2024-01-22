@@ -233,32 +233,12 @@ export default defineConfig({
                 name: "site_icon_svg",
                 label: "Site Favicon SVG",
                 description: "An optional site bookmark/favicon icon in SVG format. Make an SVG favicon here: https://realfavicongenerator.net/svg-favicon/",
-                ui: {
-                  format(value) {
-                    //add leading slash to value if it doesnt exist
-                    return value.startsWith("/") ? value : `/${value}`;
-                  },
-                  parse(value) {
-                    //remove leading slash if it exists
-                    return value.startsWith("/") ? value.slice(1) : value;
-                  },
-                },
               },
               {
                 type: "image",
                 name: "site_icon_png",
                 label: "Site Favicon PNG",
                 description: "An optional site bookmark/favicon icon in PNG format. Your image should be 260x260 pixels or more for optimal results. Make a PNG and SVG favicon here: https://realfavicongenerator.net/svg-favicon/",
-                ui: {
-                  format(value) {
-                    //add leading slash to value if it doesnt exist
-                    return value.startsWith("/") ? value : `/${value}`;
-                  },
-                  parse(value) {
-                    //remove leading slash if it exists
-                    return value.startsWith("/") ? value.slice(1) : value;
-                  },
-                },
               },
               {
                 type: "string",
