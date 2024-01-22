@@ -27,11 +27,13 @@ package = "netlify-plugin-11ty"
   [plugins.inputs]
     buildDir = "_site"
     reportOnly = false
+    exclude = ["admin/**/*"]
 
   [plugins.inputs.policies]
     defaultSrc = "'self'"
+    styleSrc = "'self'"
     scriptSrc = "'self' www.google-analytics.com www.googletagmanager.com"
     fontSrc = "'self' data: fonts.gstatic.com"
-    imgSrc = "'self' www.google-analytics.com"
-    connectSrc = "www.google-analytics.com identity.tinajs.io content.tinajs.io"
+    imgSrc = "'self' www.google-analytics.com assets.tina.io"
+    connectSrc = "www.google-analytics.com identity.tinajs.io content.tinajs.io assets.tinajs.io"
     frameAncestors = "'none'"
