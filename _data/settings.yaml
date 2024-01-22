@@ -15,7 +15,7 @@ metadata:
   # footer social link (the social title is defined in the i18n section)
   site_social_url: 'https://github.com/danurbanowicz/halide'
   # SVG image used for sharing/bookmark icons
-  site_icon_svg: assets/icons/favicon.svg
+  site_icon_svg: /assets/uploads/favicon.svg
   # optional PNG image used for sharing/bookmark icons
   site_icon_png: ''
   # add a GA4 ID to enable Google Analytics e.g. G-123456789

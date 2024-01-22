@@ -11,8 +11,8 @@
   <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
 
   {# Generate a 48px favicon.png file in the site root (from our uploaded SVG or PNG) #}
-  {% set faviconSrc = settings.metadata.site_icon_svg or settings.metadata.site_icon_png %}
-  {% favicon faviconSrc %}
+  {% set faviconImg = settings.metadata.site_icon_svg or settings.metadata.site_icon_png %}
+  {% favicon faviconImg %}
 
   {# Set specific SEO data for home page, otherwise use SEO data in page frontmatter #}
   {% if page.url == "/" %}
