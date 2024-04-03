@@ -166,11 +166,14 @@ small,
 a[href],
 a[href]:visited {
 	color: var(--color-link);
-	text-decoration: none;
+	text-underline-offset: 0.1rem;
+	-webkit-text-decoration: var(--link-underline) 0.05rem;
+	        text-decoration: var(--link-underline) 0.05rem;
 }
 
-a[href].link-nocolor {
+a[href].link-nostyle {
 	color: currentColor;
+	text-decoration: none;
 }
 
 h1,h2,h3,h4,h5,h6 {

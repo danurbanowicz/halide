@@ -43,8 +43,8 @@ theme:
     link: '#542BFF'
     # dark mode colors
     background_dark: '#101010'
-    text_dark: '#c1c1c1'
-    link_dark: '#ffffff'
+    text_dark: '#E1E1E1'
+    link_dark: '#FFFFFF'
   theme_typography:
     # font can be any variable Google Font name. Enter 'system' to use a system font stack
     font: Overpass Mono
@@ -54,6 +54,8 @@ theme:
     font_scale: 100
     # adjust line_height_scale up/down to increase/decrease line height
     line_height_scale: 100
+    # underline links
+    link_underline: true
   theme_features:
     # enables the dark mode toggle and detects the user's dark mode preference
     enable_dark_mode: true
