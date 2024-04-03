@@ -12,6 +12,7 @@
   --font-weight: {{ settings.theme.theme_typography.font_weight or "400" }};
   --font-scale: {{ settings.theme.theme_typography.font_scale or "100" }};
 	--line-height-scale: {{ settings.theme.theme_typography.line_height_scale or "100" }};
+	--link-underline: {{ "underline" if settings.theme.theme_typography.link_underline else "none" }};
   --transition-time: {{ settings.theme.theme_features.transition_duration or "300" }}ms;
 }
 
