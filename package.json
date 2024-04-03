@@ -24,18 +24,18 @@
   "homepage": "https://github.com/danurbanowicz/halide",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-fetch": "^4.0.0",
-    "@11ty/eleventy-img": "^3.1.8",
-    "@tinacms/cli": "^1.5.39",
+    "@11ty/eleventy-fetch": "^4.0.1",
+    "@11ty/eleventy-img": "^4.0.2",
+    "@tinacms/cli": "^1.5.43",
     "clean-css": "^5.3.3",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.5",
     "eleventy-plugin-helmet": "^0.2.2",
     "html-minifier": "^4.0.0",
     "js-yaml": "^4.1.0",
-    "markdown-it": "^14.0.0",
+    "markdown-it": "^14.1.0",
     "netlify-plugin-11ty": "^1.4.0",
     "netlify-plugin-csp-generator": "^1.6.1",
-    "tinacms": "^1.5.28",
+    "tinacms": "^1.6.1",
     "uglify-js": "^3.17.4"
   }
 }
