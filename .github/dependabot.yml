@@ -9,3 +9,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    labels:
+      - "npm"
+      - "dependencies"
