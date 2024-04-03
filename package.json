@@ -26,6 +26,7 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-fetch": "^4.0.1",
     "@11ty/eleventy-img": "^4.0.2",
+    "@netlify/plugin-lighthouse": "^6.0.0",
     "@tinacms/cli": "^1.5.43",
     "clean-css": "^5.3.3",
     "dotenv": "^16.4.5",

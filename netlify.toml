@@ -37,3 +37,10 @@ package = "netlify-plugin-11ty"
     imgSrc = "'self' www.google-analytics.com assets.tina.io"
     connectSrc = "www.google-analytics.com identity.tinajs.io content.tinajs.io assets.tinajs.io"
     frameAncestors = "'none'"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  # optional, deploy the lighthouse report to a path under your site
+  [plugins.inputs.audits]
+    output_path = "reports/lighthouse/index.html"
