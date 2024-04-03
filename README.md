@@ -22,7 +22,7 @@ Halide also comes with [Tina CMS](https://tina.io/) pre-configured. Tina CMS is 
 - Exceptional front end performance (Lighthouse results coming soon)
 - [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) for optimized images in next-gen formats
 - Automated `<picture>` syntax markup with srcset and sizes
-- Optional Tina CMS for easy content management
+- Tina CMS for content management (optional, can edit .md files manually)
 - Dark mode support
 - Customizable theme settings, colors, and typography
 - Simple HTML/CSS/JS minification pipeline
