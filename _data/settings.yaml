@@ -9,7 +9,7 @@ metadata:
   site_subtitle_2: Sometown, CA
   # Home page description, accepts markdown
   site_description: >
-    Halide is a customizable Jamstack portfolio theme designed for photographers and still image creators. Read the docs at [github.com/danurbanowicz/halide](https://github.com/danurbanowicz/halide)
+    Halide is a customizable Jamstack portfolio website theme designed for photographers and still image creators. Read the docs at [github.com/danurbanowicz/halide](https://github.com/danurbanowicz/halide)
   # footer contact email
   site_email: dan.urbanowicz@gmail.com
   # footer social link (the social title is defined in the i18n section)
