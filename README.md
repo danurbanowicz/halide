@@ -6,7 +6,7 @@
 
 # Halide
 
-Halide is a very simple and fast image portfolio template, ready for deployment to Netlify.
+Halide is a very simple and fast image portfolio website template, ready for deployment to Netlify.
 
 It uses [Eleventy](https://www.11ty.dev/) under the hood to generate static HTML files from Markdown and YAML content, and  responsive images in next-gen formats like AVIF and WebP.
 
