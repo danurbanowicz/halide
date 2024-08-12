@@ -36,7 +36,7 @@
     "markdown-it": "^14.1.0",
     "netlify-plugin-11ty": "^1.4.0",
     "netlify-plugin-csp-generator": "^1.6.1",
-    "tinacms": "^1.6.1",
+    "tinacms": "^2.1.1",
     "uglify-js": "^3.17.4"
   }
 }
