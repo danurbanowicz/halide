@@ -226,6 +226,8 @@ _Note: I might add Cloudinary as an image storage option if enough users feel th
 
 If you believe you've found a bug or a serious problem, please open an issue. For everything else, including suggestions and getting help, please [open a discussion](https://github.com/danurbanowicz/halide/discussions).
 
+For solutions to some common Tina CMS problems, [take a look at their FAQ](https://tina.io/docs/tina-cloud/faq/).
+
 ## Contributing
 
 Pull requests and suggestions are welcome.
