@@ -288,7 +288,7 @@ export default defineConfig({
                     label: "Space Scale",
                     name: "space_scale",
                     type: "number",
-                    description: "The percentage scale used to calculate your site's margins, padding, and line height. Default: 100",
+                    description: "The percentage scale used to calculate margins, padding, and line height. Default: 100",
                   },
                 ],
               },
