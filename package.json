@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/danurbanowicz/halide",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-fetch": "^4.0.1",
     "@11ty/eleventy-img": "^4.0.2",
     "@netlify/plugin-lighthouse": "^6.0.0",
