@@ -215,7 +215,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // Copy folders or static assets e.g. images to site output
-  eleventyConfig.addPassthroughCopy({"assets/icons/favicon.svg" : "/favicon.svg"});
+  eleventyConfig.addPassthroughCopy({"assets/uploads/favicon.svg" : "/favicon.svg"});
 
   // Disable 11ty dev server live reload when using CMS locally
   eleventyConfig.setServerOptions({
