@@ -1,6 +1,7 @@
 {
   "name": "halide",
   "version": "1.0.0",
+  "type": "module",
   "description": "Halide is a new, minimalist, responsive portfolio website designed for photographers and still image creators",
   "scripts": {
     "build": "npx @11ty/eleventy",
@@ -23,20 +24,20 @@
   },
   "homepage": "https://github.com/danurbanowicz/halide",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-fetch": "^4.0.1",
-    "@11ty/eleventy-img": "^4.0.2",
-    "@netlify/plugin-lighthouse": "^6.0.0",
-    "@tinacms/cli": "^1.6.0",
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-fetch": "^5.0.2",
+    "@11ty/eleventy-img": "^6.0.2",
+    "@netlify/plugin-lighthouse": "^6.0.1",
+    "@tinacms/cli": "^1.9.5",
     "clean-css": "^5.3.3",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.5.0",
     "eleventy-plugin-helmet": "^0.2.2",
     "html-minifier": "^4.0.0",
     "js-yaml": "^4.1.0",
     "markdown-it": "^14.1.0",
     "netlify-plugin-11ty": "^1.4.0",
     "netlify-plugin-csp-generator": "^1.6.1",
-    "tinacms": "^2.2.0",
-    "uglify-js": "^3.19.2"
+    "tinacms": "^2.7.5",
+    "uglify-js": "^3.19.3"
   }
 }
