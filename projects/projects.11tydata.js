@@ -1,6 +1,6 @@
-module.exports = function() {
-	return {
-		eleventyComputed: {
+export default function() {
+  return {
+    eleventyComputed: {
       permalink(data) {
         // If the page is in `draft:true` mode, don't write it to disk...
         if (data.draft) {
@@ -25,5 +25,5 @@ module.exports = function() {
     tags: [
       "project"
     ],
-	}
+  }
 }

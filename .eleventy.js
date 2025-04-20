@@ -1,16 +1,16 @@
-const { DateTime } = require("luxon");
-const CleanCSS = require("clean-css");
-const UglifyJS = require("uglify-js");
-const htmlmin = require("html-minifier");
-const yaml = require("js-yaml");
-const slugify = require("slugify");
-const eleventyHelmetPlugin = require("eleventy-plugin-helmet");
-const EleventyFetch = require("@11ty/eleventy-fetch");
-const Image = require("@11ty/eleventy-img");
-const MarkdownIt = require("markdown-it");
+import { DateTime } from "luxon";
+import CleanCSS from "clean-css";
+import UglifyJS from "uglify-js";
+import htmlmin from "html-minifier";
+import yaml from "js-yaml";
+import slugify from "slugify";
+import eleventyHelmetPlugin from "eleventy-plugin-helmet";
+import EleventyFetch from "@11ty/eleventy-fetch";
+import Image from "@11ty/eleventy-img";
+import MarkdownIt from "markdown-it";
 const mdRender = new MarkdownIt();
 
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
 
   eleventyConfig.addFilter("renderUsingMarkdown", function(rawString) {
     return mdRender.render(rawString);
@@ -23,22 +23,22 @@ module.exports = function(eleventyConfig) {
     // Remove preceding slash from image path if it exists
     src = src.startsWith("/") ? src.slice(1) : src;
 
-		let metadata = await Image(src, {
-			widths: [48,192,512],
-			formats: ["png"],
+        let metadata = await Image(src, {
+            widths: [48,192,512],
+            formats: ["png"],
       urlPath: "/",
       outputDir: "./_site/",
       filenameFormat: function (id, src, width, format, options) {
-		    const name = "favicon";
+            const name = "favicon";
         return `${name}-${width}.${format}`;
       }
-		});
+        });
 
     // Build the icon link tag
     let data = metadata.png[0];
-		return `<link rel="icon" href="${data.url}" type="image/png">`;
+        return `<link rel="icon" href="${data.url}" type="image/png">`;
 
-	});
+    });
 
   // Shortcode to generate a responsive project image
   eleventyConfig.addShortcode("generateImage", async function(params) {
@@ -91,18 +91,18 @@ module.exports = function(eleventyConfig) {
     }
 
     return `<picture class="${classes}" data-orientation="${orientation}">
-			${Object.values(metadata).map(imageFormat => {
-				return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${viewportSizes}">`;
-			}).join("\n")}
-				<img
-					src="${lowsrc.url}"
-					width="${lowsrc.width}"
-					height="${lowsrc.height}"
-					alt="${alt}"
+            ${Object.values(metadata).map(imageFormat => {
+                return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${viewportSizes}">`;
+            }).join("\n")}
+                <img
+                    src="${lowsrc.url}"
+                    width="${lowsrc.width}"
+                    height="${lowsrc.height}"
+                    alt="${alt}"
           class="hover-fade"
-					loading="${loadingType}"
-					decoding="async">
-			  </picture>`;
+                    loading="${loadingType}"
+                    decoding="async">
+              </picture>`;
   
   });
 
