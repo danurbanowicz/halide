@@ -69,12 +69,12 @@ export default function(eleventyConfig) {
       formats: outputFormats,
       urlPath: "/assets/images/",
       outputDir: "./_site/assets/images/",
-      cacheOptions: {
-        // If image is a remote URL, this is the amount of time before 11ty fetches a fresh copy
-        duration: "5y",
-        directory: ".cache",
-        removeUrlQueryParams: true,
-      },
+      // cacheOptions: {
+      //   // If image is a remote URL, this is the amount of time before 11ty fetches a fresh copy
+      //   duration: "5y",
+      //   directory: ".cache",
+      //   removeUrlQueryParams: true,
+      // },
     });
 
     let lowsrc = metadata.jpeg[0];

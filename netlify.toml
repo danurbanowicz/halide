@@ -9,13 +9,13 @@
   command = "npx tinacms build && eleventy"
 
 # Cache generated content between builds (e.g. images)
-[[plugins]]
-package = "netlify-plugin-11ty"
+# [[plugins]]
+# package = "netlify-plugin-11ty"
 
-  [plugins.inputs]
-  cache_img = "assets/images"
-  cache_img_httpHeader = true
-  cache_assets = "../.cache"
+#   [plugins.inputs]
+#   cache_img = "assets/images"
+#   cache_img_httpHeader = true
+#   cache_assets = "../.cache"
 
 # Generate a CSP policy at Netlify build time using a build plugin
 # Automatically generates SHA-256 hashes for inline <style> and <script> tags
